@@ -47,7 +47,7 @@ const App = () => {
       <h1 className="text-5xl font-semibold text-center text-white mb-12">
       My Notes
     </h1>
-    <div className="flex gap-10 flex-wrap">
+    <div className="flex gap-15 ">
 
       <div
         onClick={() => setShowForm(true)}
@@ -72,17 +72,27 @@ const App = () => {
       {task.map((elem, idx) => (
         <div
           key={idx}
-          className="relative h-60 w-60 rounded-3xl 
+          className="h-60 w-60 rounded-3xl flex justify-between gap-5
                      bg-white/10 backdrop-blur-md 
                      border border-white/30 
                      p-6 text-white 
                      shadow-lg"
         >
 
+          
+          <div className="">
+            <h3 className="text-xl font-bold mb-3 break-words">
+              {elem.title}
+            </h3>
+            <p className="text-sm opacity-90 break-words">
+              {elem.details}
+            </p>
+          </div>
+
           <button
             onClick={() => deleteNote(idx)}
-            className="absolute top-4 right-4 
-                       bg-white/20 
+            className="top-4 right-4 h-10 w-10 justify-center items-center
+                        text-black
                        hover:bg-red-200 
                        hover:text-red-600 
                        p-2 rounded-full 
@@ -90,13 +100,6 @@ const App = () => {
           >
             <Trash2 size={18} />
           </button>
-
-          <h3 className="text-xl font-bold mb-3 break-words">
-            {elem.title}
-          </h3>
-          <p className="text-sm opacity-90 break-words">
-            {elem.details}
-          </p>
         </div>
       ))}
 
