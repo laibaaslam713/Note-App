@@ -5,8 +5,8 @@ Users can add notes, view them, and delete them easily with a clean and responsi
 ## Features
 
 ➕ Add new notes
-🗑 Delete notes
-📋 View all notes instantly
+❌ Delete notes
+📝 View all notes instantly
 💻 Responsive design
 🎨 Beautiful purple gradient background
 🪟 Popup modal form for adding notes
