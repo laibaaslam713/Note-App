@@ -1,6 +1,6 @@
 import React from 'react'
 // import image from "./assets/writting-notes.png";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Trash2 } from 'lucide-react'
 import { Plus } from 'lucide-react';
 
@@ -8,9 +8,23 @@ const App = () => {
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
 
-  const [task,setTask] = useState([])
+  // const [task,setTask] = useState([])
 
   const [showForm, setShowForm] = useState(false)
+
+
+  // local storage
+
+    const [task, setTask] = useState(() => {
+      const savedNotes = localStorage.getItem("notes");
+      return savedNotes ? JSON.parse(savedNotes) : [];
+    });
+
+    useEffect(() => {
+      localStorage.setItem("notes", JSON.stringify(task));
+    }, [task]);
+
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -28,8 +42,12 @@ const App = () => {
 
     setShowForm(false)
 
+    
+
+
 
   }
+
 
   const deleteNote = (idx) => {
     console.log("note deleted")
@@ -42,7 +60,7 @@ const App = () => {
     setTask(copyTask)
   }
   return (
-    <div className='min-h-screen bg-gradient-to-br from-purple-800 via-purple-700s to-pink-700  p-10'>
+    <div className='min-h-screen bg-gradient-to-br from-purple-800 via-purple-700 to-pink-700  p-10'>
 
       <h1 className="text-5xl font-semibold text-center text-white mb-12">
       My Notes
